@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            background-color: rgb(215, 255, 253);
+        }
+        h1 {
+            text-align: center;
+            color: teal;
+            margin-bottom: 30px;
+            font-size: 45px;
+            padding-top: 50px;
+            padding-bottom: 40px;
+            
+        }
+
+        .calculator {
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 60px);
+            background-color: rgb(55, 52, 52);
+            border-radius: 10px;
+            gap: 5px;
+            width: 15%;
+            padding: 50px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
+        .box{
+            background-color:  rgb(55, 52, 52);
+        }
+
+        .calculator>div {
+            display: flex;
+            align-content: center;
+            color: whitesmoke;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: gray;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+        }
+
+        .calculator>div:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+
+        .calculator>div:nth-child(5),
+        .calculator>div:nth-child(9),
+        .calculator>div:nth-child(13),
+        .calculator>div:nth-child(16),
+        .calculator>div:nth-child(17) {
+            background-color: gray;
+            color: white;
+        }
+
+        .calculator>div:nth-child(14) {
+            background-color: red;
+            color: white;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>Simple Calculator</h1>
+
+    <div class="calculator">
+
+        <div class="box"></div>
+
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>+</div>
+
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>-</div>
+
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>*</div>
+
+        <div>C</div>
+        <div>0</div>
+        <div>=</div>
+        <div>/</div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    let keys=document.querySelectorAll(".calculator>div");
+    let bag="";
+    for(let i=0;i<keys.length;i++){
+        keys[i].addEventListener("click",mycalcii);
+    }
+
+   function mycalcii(event){
+    let targetnum= event.target.innerText;
+
+    if(targetnum =="C"){
+        bag="";
+        document.querySelector(".box").innerText=bag;
+    }
+    else if(targetnum== "="){
+        console.log(eval(bag));
+        let res = eval(bag);
+        document.querySelector(".box").innerText=res;
+    }
+    else{
+        bag=bag+ targetnum;
+        document.querySelector(".box").innerText=bag;
+    }
+   }
+
+</script>
